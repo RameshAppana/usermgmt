@@ -1,0 +1,80 @@
+  <h2 class="text-center">Edit User</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+   
+      <div class="form-group required">
+          <label class="control-label" for="firstName">First Name:</label>
+          <input formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+          <div *ngIf="isInvalid('firstName')" class="form-control-feedback">
+            <span *ngIf= "isFieldEmpty('firstName')" class="validation-label"></span>
+            <span *ngIf= "isIncorrectPattern('firstName')" class="custom-label"></span>
+          </div>
+        </div>
+    
+        <div class="form-group required">
+          <label class="control-label"  for="lastName">Last Name:</label>
+          <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+          <div *ngIf="isInvalid('lastName')" class="form-control-feedback">
+              <span *ngIf= "isFieldEmpty('lastName')" class="validation-label"></span>
+              <span *ngIf= "isIncorrectPattern('lastName')" class="custom-label"></span>
+            </div>
+        </div>
+        <div class="form-group required">
+            <label class="control-label" for="email">Email address:</label>
+            <input type="email" formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
+            <div *ngIf="isInvalid('email')" class="form-control-feedback">
+                <span *ngIf= "isFieldEmpty('email')" class="validation-label"></span>
+                <span *ngIf= "isIncorrectPattern('email')" class="custom-label"></span>
+              </div>
+          </div>
+        <div class="form-group required">
+            <label class="control-label" for="address">Address:</label>
+            <textarea formControlName="address" placeholder="Address" name="address" class="form-control" id="address"></textarea>
+            <div *ngIf="isInvalid('address')" class="form-control-feedback">
+                <span *ngIf= "isFieldEmpty('address')" class="validation-label"></span>
+                <span *ngIf= "isIncorrectPattern('address')" class="custom-label"></span>
+              </div>
+          </div>
+        <div class="form-group required">
+              <label class="control-label" for="dob">DOB:</label>
+              <!-- <input type="datetime" formControlName="dob" placeholder="Address" name="dob" class="form-control" id="dob"> -->
+              <div class="input-group">
+                  <input class="form-control" formControlName="dob" placeholder="yyyy-mm-dd"
+                         name="dp"  ngbDatepicker  #d="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                  </div>
+                </div>
+              <div *ngIf="isInvalid('dob')" class="form-control-feedback">
+                  <span *ngIf= "isFieldEmpty('dob')" class="validation-label"></span>
+                  <span *ngIf= "isIncorrectPattern('dob')" class="custom-label"></span>
+                </div>
+        </div>
+        <div class="form-group required">
+            <label class="control-label" for="socialmedia">Social Media Link:</label>
+            <input type="url" formControlName="socialmedia" placeholder="Social Media Link" name="socialmedia" class="form-control" id="socialmedia">
+            <div *ngIf="isInvalid('socialmedia')" class="form-control-feedback">
+                <span *ngIf= "isFieldEmpty('socialmedia')" class="validation-label"></span>
+                <span *ngIf= "isIncorrectPattern('socialmedia')" class="custom-label"></span>
+              </div>
+      </div>
+      <div class="form-group required">
+          <label class="control-label" for="gender">Gender:</label>
+          <select class="form-control" id="gender" formControlName="gender"  name="gender">
+              <option value="">Please Select</option>
+              <option *ngFor= "let res of gender" [value] = res.id> {{res.value}}</option>          
+            </select>
+          <div *ngIf="isInvalid('gender')" class="form-control-feedback">
+              <span *ngIf= "isFieldEmpty('gender')" class="validation-label"></span>
+              <span *ngIf= "isIncorrectPattern('gender')" class="custom-label"></span>
+            </div>
+    </div>
+    <div class="form-group required">
+        <label class="control-label" for="luckyno">Lucky Number:</label>
+        <input type="number" formControlName="luckyno" placeholder="Lucky Number" name="luckyno" class="form-control" id="luckyno">
+        <div *ngIf="isInvalid('luckyno')" class="form-control-feedback">
+            <span *ngIf= "isFieldEmpty('luckyno')" class="validation-label"></span>
+            <span *ngIf= "isIncorrectPattern('luckyno')" class="custom-label"></span>
+          </div>
+    </div>
+        <button class="btn btn-success" [disabled]="isForminvalid()">Update</button>
+  </form>

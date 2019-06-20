@@ -1,0 +1,41 @@
+  <h2> User Details</h2>
+  <button class="btn btn-danger" (click)="addUser()"> Add User</button>
+  <div class="table-responsive-sm">    
+  <table class="table table-striped">
+    <thead class="thead-light">
+    <tr>
+      <th class="hidden" scope="col">Id</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">DOB</th>
+      <th scope="col">Social</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Lucky No</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td class="hidden">{{user.id}}</td>
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.address}}</td>
+      <td>{{user.dob.day}}/{{user.dob.month}}/{{user.dob.year}}</td>
+      <td>{{user.socialmedia}}</td>
+      <td>{{user.gender}}</td>
+      <td>{{user.luckyno}}</td>
+      <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button>&nbsp; &nbsp; &nbsp;
+      <button class="btn btn-danger" (click)="editUser(user)">
+           Edit</button></td>
+<!-- <td>
+        <div _ngcontent-c13="" class="pull-right">
+          <button _ngcontent-c13="" class="btn btn-outline-warning margin-r20" type="button">Reset</button>
+          <button _ngcontent-c13="" class="btn btn-outline-success" type="button" disabled="">Update</button>
+        </div></td> -->
+    </tr>
+    </tbody>
+  </table>
+</div>
